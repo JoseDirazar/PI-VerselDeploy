@@ -1,20 +1,20 @@
 const axios = require("axios");
-const URL = "https://api.rawg.io/api/";
+
 
 
 require("dotenv").config();
-const { API_KEY } = process.env;
+const { API_KEY, API_URL } = process.env;
 
 async function getVideogames() {
   try {
     let response = [];
     let allResponse = [];
 
-    response = await Promise.all([axios.get(`${URL}games?key=${API_KEY}&page=${1}`),
-      axios.get(`${URL}games?key=${API_KEY}&page=${2}`),
-      axios.get(`${URL}games?key=${API_KEY}&page=${3}`), 
-      axios.get(`${URL}games?key=${API_KEY}&page=${4}`),
-      axios.get(`${URL}games?key=${API_KEY}&page=${5}`)]
+    response = await Promise.all([axios.get(`${API_URL}games?key=${API_KEY}&page=${1}`),
+      axios.get(`${API_URL}games?key=${API_KEY}&page=${2}`),
+      axios.get(`${API_URL}games?key=${API_KEY}&page=${3}`), 
+      axios.get(`${API_URL}games?key=${API_KEY}&page=${4}`),
+      axios.get(`${API_URL}games?key=${API_KEY}&page=${5}`)]
     );
       
        
@@ -47,7 +47,7 @@ async function getVideogames() {
 
 async function getVideogameById(id) {
   try {
-    const { data } = await axios.get(`${URL}games/${id}?key=${API_KEY}`);
+    const { data } = await axios.get(`${API_URL}games/${id}?key=${API_KEY}`);
     //console.log(data)
     const videogame = {
       id: data.id,
@@ -73,7 +73,7 @@ async function getVideogameById(id) {
 
 async function searchVideogame(videogameName) {
   try {
-    const { data } = await axios.get(`${URL}games?search=${videogameName}&key=${API_KEY}`);
+    const { data } = await axios.get(`${API_URL}games?search=${videogameName}&key=${API_KEY}`);
     //console.log(data.results)
     let arrayOfSearchGame = data.results.map(videogame => ({
       id: videogame.id,
@@ -95,7 +95,7 @@ async function searchVideogame(videogameName) {
 
 async function getGenres() {
   try {
-    const { data } = await axios.get(`${URL}genres?key=${API_KEY}`);
+    const { data } = await axios.get(`${API_URL}genres?key=${API_KEY}`);
     //console.log(data);
     const genresArray = [];
     data.results.forEach((genre) => {
