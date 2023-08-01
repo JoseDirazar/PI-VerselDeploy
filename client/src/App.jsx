@@ -40,7 +40,7 @@ function App() {
   useEffect(() => {
     (async function inEffect() {
       try {
-        await axios.get('http://localhost:3001/genres')
+        await axios.get('https://rightful-finger-production.up.railway.app/genres')
       } catch (error) {
         console.log(error)
       }

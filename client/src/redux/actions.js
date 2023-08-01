@@ -1,6 +1,6 @@
 import {ADD_GAMES,FILTER_GENRES,FILTER_NAMES,FILTER_RATING,RESET,PREV,NEXT,LOOKING,RELOAD,POST_VIDEOGAME,SHOW_DB_GAMES} from "./actionTypes";
 import axios from "axios"
-axios.defaults.baseURL='http://localhost:3001'
+axios.defaults.baseURL='https://rightful-finger-production.up.railway.app'
 
 
 export function showDBgames() {
