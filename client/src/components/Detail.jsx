@@ -13,7 +13,7 @@ export default function Detail() {
     async function inEffect() {
       try {
         let { data } = await axios.get(
-          `https://rightful-finger-production.up.railway.app/${id}`
+          `https://rightful-finger-production.up.railway.app/videogames/${id}`
         );
 
         console.log("data: ", data);
