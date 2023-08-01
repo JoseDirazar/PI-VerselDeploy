@@ -40,6 +40,7 @@ export default function SearchBar(/* { savedName } */) {
     if (event.key === "Enter") {
       setName("");
     localStorage.removeItem("searchName");
+    navigate('/home')
     }
   } 
 

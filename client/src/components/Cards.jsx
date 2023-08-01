@@ -1,9 +1,8 @@
+import style from "./CSS/Cards.module.css";
 import Card from "./Card";
 import Paginate from "./Paginate";
-import style from "./CSS/Cards.module.css";
 
 import { useDispatch, useSelector } from "react-redux";
-import { useEffect, useState } from "react";
 
 import {filterByName,filterByGenres, filterByRating, reset } from "../redux/actions";
 
@@ -53,12 +52,12 @@ export default function Cards() {
   return (
     <div className={style.cardsContainer}>
       <div className={style.filterOptions}>
-        <p className={style.ordenarPor}>Ordenar por: </p>
+        <p className={style.ordenarPor}>Sort by: </p>
         <div className={style.options}>
           <label htmlFor="a-z">Abc </label>
           <select name="a-z" onChange={handleOrder} defaultValue="">
             <option value="" disabled>
-              --Select--
+             {' '}-- Select --
             </option>
             <option value="A"> A - Z </option>
             <option value="D"> Z - A </option>
@@ -69,7 +68,7 @@ export default function Cards() {
           <label htmlFor="genero">Genres </label>
           <select name="genero" onChange={handleGenres} defaultValue="">
             <option value="" disabled>
-              --Select--
+              {' '}-- Select --
             </option>
             <option value="Action">Action</option>
             <option value="Inide">Inide</option>
@@ -96,10 +95,10 @@ export default function Cards() {
           <label htmlFor="rating">Rating </label>
           <select name="rating" onChange={handleRating} defaultValue="">
             <option value="" disabled>
-              --Select--
+              {' '}-- Select --
             </option>
-            <option value="ASC">Ascendente</option>
-            <option value="DES">Descendente</option>
+            <option value="ASC">Best ratings</option>
+            <option value="DES">Lower ratings</option>
           </select>
         </div>
 

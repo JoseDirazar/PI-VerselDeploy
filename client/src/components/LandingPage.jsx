@@ -1,6 +1,12 @@
 import style from './CSS/LandingPage.module.css'
+import { Navigate, useNavigate } from 'react-router-dom'
+export default function LandingPage() {
 
-export default function LandingPage({goingHome}) {
+    const navigate = useNavigate()
+
+    function goingHome() {
+        navigate('/home')
+    }
 
     return(<div className={style.background}><div className={style.landingContainer}>
         <h1 className={style.h1}>Welcome to Freak-Games</h1>

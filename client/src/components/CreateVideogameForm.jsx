@@ -1,9 +1,9 @@
+import style from "./CSS/CreateVideogameForm.module.css";
 import { useState, useEffect } from "react";
-import { postVideogame } from "../redux/actions";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
-import style from "./CSS/CreateVideogameForm.module.css";
+import { postVideogame } from "../redux/actions";
 import validation from "./validations/validate";
 
 export default function CreateVideogameForm() {
@@ -191,7 +191,6 @@ export default function CreateVideogameForm() {
         <div className={style.secondColumn}>
 
           <div className={style.generos}>
-
             <label htmlFor="generos" className={style.label}>Genres</label>
             <select name="generos" onChange={handleGenreSelect} className={style.input} defaultValue="" >
               <option value="" disabled> Select genres</option>
@@ -200,18 +199,21 @@ export default function CreateVideogameForm() {
 
             {selectedGenres.length < 1 ? null : ( <ul className={style.unlistOptions}> {selectedGenres.map((genre) => (<li key={genre.id} className={style.genreTag}>{genre.name}
             <button type="button" onClick={() => handleRemoveGenre(genre.id)} className={style.removeButton}>x</button></li>))} </ul> )}
-
           </div>
-          <div className={style.plataformas}>
 
-          <label className={style.label}>Platforms</label>
-          <select onChange={handlePlatformChange} className={style.input} defaultValue="" >
-            <option value="" disabled>Select platforms</option>
-            {allPlatforms.map((platform) => ( <option key={platform} value={platform}>{platform}</option>))}
-          </select>
-          {selectedPlatforms.length < 1 ? null : ( <ul className={style.unlistOptions}> {selectedPlatforms.map((platform) => ( <li key={platform} className={style.genreTag}>{platform} <button className={style.removeButton} onClick={() => handleRemovePlatform(platform)} >X</button> </li> ))}
+          <div className={style.plataformas}>
+            <label className={style.label}>Platforms</label>
+            <select onChange={handlePlatformChange} className={style.input} defaultValue="" >
+              <option value="" disabled>Select platforms</option>
+              {allPlatforms.map((platform) => ( <option key={platform} value={platform}>{platform}</option>))}
+            </select>
+            {selectedPlatforms.length < 1 ? null : ( <ul className={style.unlistOptions}> {selectedPlatforms.map((platform) => (
+              <li key={platform} className={style.genreTag}>{platform}
+                <button className={style.removeButton} onClick={() => handleRemovePlatform(platform)} >X</button> 
+              </li> 
+              ))}
             </ul>
-          )}
+            )}
           </div>
         </div>
 

@@ -46,16 +46,17 @@ function App() {
       }
     })()
   }, [])
+
   
 
-  console.log(accessHome)
+  
 
   return (
     <div className="App">
-      {(location.pathname !== "/") && <NavBar /* savedName={savedName} */ />}
+      {(location.pathname !== "/") && <NavBar />}
       <RefreshRedirect />
       <Routes>
-        <Route path="/" element={<LandingPage goingHome={goingHome} />}/>
+        <Route path="/" element={<LandingPage />}/>
         <Route path="/home" element={<Cards  />} />
         <Route path="/detail/:id" element={<Detail />} />
         <Route path="/create" element={<CreateVideogameForm />} />

@@ -65,7 +65,7 @@ export default function Detail() {
       <div className={style.grupo2}>
         <div className={style.grupoIntermedio}>
           <div className={style.idYnombre}>
-            <h3 className={style.id}>Id: {id}</h3>
+            <h3 className={style.id}>ID: {id}</h3>
             <h1 className={style.nombre}>{videogame.nombre}</h1>
             <div className={style.imagen}>
             <img
@@ -80,19 +80,19 @@ export default function Detail() {
               <h3>Rating</h3>
               <p className={style.parrafosPGrupo2}> {videogame.rating}</p>
               <p className={style.parrafosGrupo2}></p>
-              <h3>Lanzamiento</h3>
+              <h3>Released</h3>
               <p className={style.parrafosPGrupo2}> {videogame.fecha_lanzamiento}</p>
             </div>  
             <div className={style.dataParrafos}>
-              <h3>Plataformas</h3>
+              <h3>Platforms</h3>
               <p> {videogame.plataformas}</p>
             </div>
             <div className={style.dataParrafos}>
-              <h3>Generos</h3>
+              <h3>Genres</h3>
               <p> {videogame.genres}</p>
             </div>
             <div className={style.dataParrafos}>
-              <h3>Desarrolladores</h3>
+              <h3>Developers</h3>
               <p> {videogame.desarrolladores}</p>
             </div>
           </div>
