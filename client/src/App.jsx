@@ -5,7 +5,6 @@ import Cards from "./components/Cards"
 import CreateVideogameForm from "./components/CreateVideogameForm"
 import NavBar from "./components/NavBar"
 import About from "./components/About"
-import RefreshRedirect from './components/RefreshRedirect';
 
 import {Routes, Route, useLocation, useNavigate } from "react-router-dom"
 
@@ -16,11 +15,12 @@ import axios from "axios"
 
 function App() {
   
-  const [accessHome, setAccessHome] = useState(false)
-  const location = useLocation();
+  const location = useLocation()
   const navigate = useNavigate()
   const dispatch = useDispatch()
 
+  const [accessHome, setAccessHome] = useState(false)
+ 
   async function goingHome() {
     try {
       setAccessHome(true)
@@ -29,9 +29,6 @@ function App() {
       console.log(error)
     }
   }
-
-  
-  const savedName = localStorage.getItem("searchName");
 
   useEffect(() => {
     dispatch(addVideogames()) 
@@ -48,15 +45,16 @@ function App() {
   }, [])
 
   
-
+useEffect(() => {
+  !accessHome & navigate('/')
+}, [accessHome])
   
 
   return (
     <div className="App">
       {(location.pathname !== "/") && <NavBar />}
-      <RefreshRedirect />
       <Routes>
-        <Route path="/" element={<LandingPage />}/>
+        <Route path="/" element={<LandingPage goingHome={goingHome} />}/>
         <Route path="/home" element={<Cards  />} />
         <Route path="/detail/:id" element={<Detail />} />
         <Route path="/create" element={<CreateVideogameForm />} />

@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useSelector, useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
 import { searching } from "../redux/actions";
 import { useNavigate } from "react-router-dom";
 import style from './CSS/SearchBar.module.css'
@@ -28,14 +28,6 @@ export default function SearchBar(/* { savedName } */) {
     }
   }, [name])
 
-  
-
-  /* function handleOnClick() {
-    dispatch(searching(name.trim()));
-    setName("");
-    localStorage.removeItem("searchName");
-  } */
-
   function handleOnKeyPress(event) {
     if (event.key === "Enter") {
       setName("");
@@ -47,8 +39,7 @@ export default function SearchBar(/* { savedName } */) {
   return (
     <div className={style.searchBar}>
       Search: 
-      <input className={style.input} type="search" value={name} onChange={handleOnChange} onKeyDown={handleOnKeyPress} />
-     
+      <input className={style.input} type="search" value={name} onChange={handleOnChange} onKeyDown={handleOnKeyPress} />   
     </div>
   );
 }
