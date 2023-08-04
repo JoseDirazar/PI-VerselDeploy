@@ -7,28 +7,27 @@ import NavBar from "./components/NavBar"
 import About from "./components/About"
 
 import {Routes, Route, useLocation, useNavigate } from "react-router-dom"
-
 import { useEffect, useState } from "react"
 import { useDispatch } from 'react-redux';
-import { addVideogames, reload} from './redux/actions';
+
+import { addVideogames } from './redux/actions';
 import axios from "axios"
 
-function App() {
-  
+export default function App() {
+  const [access, setAccess] = useState(false)
   const location = useLocation()
   const navigate = useNavigate()
   const dispatch = useDispatch()
-
-  const [accessHome, setAccessHome] = useState(false)
  
-  async function goingHome() {
-    try {
-      setAccessHome(true)
-      navigate('/home')
-    } catch (error) {
-      console.log(error)
-    }
+
+  function goingHome() {   
+    setAccess(true)
+    navigate('/home')   
   }
+
+  useEffect(() => {
+    !access & navigate('/')
+  })
 
   useEffect(() => {
     dispatch(addVideogames()) 
@@ -43,13 +42,7 @@ function App() {
       }
     })()
   }, [])
-
   
-useEffect(() => {
-  !accessHome & navigate('/')
-}, [accessHome])
-  
-
   return (
     <div className="App">
       {(location.pathname !== "/") && <NavBar />}
@@ -64,4 +57,4 @@ useEffect(() => {
   );
 }
 
-export default App;
+
