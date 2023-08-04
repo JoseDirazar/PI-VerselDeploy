@@ -27,7 +27,7 @@ export default function App() {
 
   useEffect(() => {
     !access & navigate('/')
-  })
+  }, [access])
 
   useEffect(() => {
     dispatch(addVideogames()) 
